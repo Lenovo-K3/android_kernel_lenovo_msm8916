@@ -7,11 +7,10 @@ red=$(tput setaf 1) # red
 grn=$(tput setaf 2) # green
 blu=$(tput setaf 4) # blue
 txtrst=$(tput sgr0) # Reset
-${txtrst}
 
 mkdir ${outdir}
 # Info for Java
-echo -e ${blu}"Config Java"${txtrst}
+echo -e ${txtrst} ${blu}"Config Java"${txtrst}
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 # Set patch for ToolChain

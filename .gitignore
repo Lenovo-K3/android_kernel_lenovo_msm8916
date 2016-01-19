@@ -62,7 +62,15 @@ modules.builtin
 include/config
 include/generated
 arch/*/include/generated
+
+#
+# Generated out files
+#
 out/
+Mansi/*.zip
+Mansi/Output/dt.img
+Mansi/Output/zImage
+
 
 # stgit generated dirs
 patches-*

@@ -26,15 +26,15 @@ export TARGET_BUILD_VARIANT=user
 
 compile_kernel ()
 {
-echo -e "$cyan Clean old files"
+echo -e "$cyan Clean old files $nocol"
 rm ${OUT_DIR}/arch/arm/boot/Image
 rm ${OUT_DIR}/arch/arm/boot/zImage
 rm ${KERNEL_DIR}/Mansi/Output/dt.img
 rm ${KERNEL_DIR}/Mansi/Output/zImage
 
-echo -e "$cyan Make DefConfig"
+echo -e "$cyan Make DefConfig $nocol"
 make O=${OUT_DIR} msm8916-k30_defconfig
-echo -e "$cyan Build kernel"
+echo -e "$cyan Build kernel $nocol"
 make O=${OUT_DIR} -j$(grep -c ^processor /proc/cpuinfo)
 
 if ! [ -a $KERN_IMG ];
@@ -52,14 +52,14 @@ make ARCH=arm -j$(grep -c ^processor /proc/cpuinfo) clean mrproper
 compile_kernel
 ;;
 esac
-echo -e "$cyan Build dtb file"
+echo -e "$cyan Build dtb file $nocol"
 scripts/dtbToolCM -2 -o ${OUT_DIR}/arch/arm/boot/dt.img -s 2048 -p ${OUT_DIR}/scripts/dtc/ ${OUT_DIR}/arch/arm/boot/dts/
-echo -e "$cyan Copy kernel"
+echo -e "$cyan Copy kernel $nocol"
 cp ${OUT_DIR}/arch/arm/boot/dt.img  ${KERNEL_DIR}/Mansi/Output/dt.img
 cp ${OUT_DIR}/arch/arm/boot/zImage  ${KERNEL_DIR}/Mansi/Output/zImage
 cd ${KERNEL_DIR}/Mansi/Output/
-echo -e "$cyan Build flash file"
-zip -r ../${zipfile} ramdisk anykernel.sh dtb zImage patch tools META-INF -x *kernel/.gitignore*
+echo -e "$cyan Build flash file $nocol"
+zip -r ../${zipfile} ramdisk anykernel.sh dt.img zImage patch tools META-INF -x *kernel/.gitignore*
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
 echo -e "$yellow Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds.$nocol"

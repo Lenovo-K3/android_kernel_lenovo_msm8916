@@ -30,33 +30,31 @@ mkdir -p /tmp/anykernel;
 cd /tmp/anykernel;
 unzip -o $ZIP;
 
-ui_print "****************************************************";
-ui_print "                By Mansi - slfl@4PDA                ";
-ui_print "****************************************************";
+ui_print "*********************";
+ui_print "By Mansi - slfl@4PDA ";
+ui_print "*********************";
 
 /sbin/busybox mount /system;
 
-ui_print "***********************";
-ui_print "Installing kernel....";
-ui_print "Please Wait for your";
-ui_print "RazorSharp Phone.......";
-ui_print "***********************";
+ui_print "*********************";
+ui_print "Install new zImage";
+ui_print "Please wait...";
+ui_print "*********************";
 /sbin/sh /tmp/anykernel/anykernel.sh;
 if [ "$(cat /tmp/anykernel/exitcode)" == 1 ]; then 
   umount /system;
   abort;
 fi;
-ui_print "  ";
-ui_print "   SUCCESS  ";
-ui_print "  ";
+ui_print "*********************";
+ui_print "SUCCESS";
+ui_print "*********************";
 
 if [ "$(file_getprop /tmp/anykernel/anykernel.sh do.cleanup)" == 1 ]; then
   rm -rf /tmp/anykernel;
 fi;
 
 umount /system;
-ui_print "*******************************";
-ui_print "THANKS FOR FLASHING";
-ui_print "Mansi kernel for Lenovo K30";
-ui_print "Leave a Feedback";
-ui_print " ******************************";
+ui_print "*********************";
+ui_print "Thanks for flas";
+ui_print "Mansi for Lenovo K30";
+ui_print "*********************";

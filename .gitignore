@@ -70,6 +70,7 @@ out/
 Mansi/*.zip
 Mansi/Output/dt.img
 Mansi/Output/zImage
+Mansi/modules
 
 
 # stgit generated dirs

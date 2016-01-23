@@ -56,11 +56,6 @@ esac
 echo -e "$cyan Build dtb file $nocol"
 scripts/dtbToolCM -2 -o ${OUT_DIR}/arch/arm/boot/dt.img -s 2048 -p ${OUT_DIR}/scripts/dtc/ ${OUT_DIR}/arch/arm/boot/dts/
 
-echo -e "$cyan Copy kernel $nocol"
-cp ${OUT_DIR}/arch/arm/boot/dt.img  ${KERNEL_DIR}/Mansi/Output/dt.img
-cp ${OUT_DIR}/arch/arm/boot/zImage  ${KERNEL_DIR}/Mansi/Output/zImage
-cd ${KERNEL_DIR}/Mansi/Output/
-
 echo -e "$cyan Copy modules $nocol"
 cp ${OUT_DIR}/arch/arm/mach-msm/dma_test.ko					${KERNEL_DIR}/Mansi/modules/
 cp ${OUT_DIR}/arch/arm/mach-msm/msm-buspm-dev.ko 			${KERNEL_DIR}/Mansi/modules/
@@ -81,6 +76,11 @@ cp ${OUT_DIR}/drivers/mmc/card/mmc_block_test.ko 			${KERNEL_DIR}/Mansi/modules/
 cp ${OUT_DIR}/drivers/mmc/card/mmc_test.ko 					${KERNEL_DIR}/Mansi/modules/
 cp ${OUT_DIR}/drivers/spi/spidev.ko 						${KERNEL_DIR}/Mansi/modules/
 cp ${OUT_DIR}/drivers/usb/host/ice40-hcd.ko 				${KERNEL_DIR}/Mansi/modules/
+
+echo -e "$cyan Copy kernel $nocol"
+cp ${OUT_DIR}/arch/arm/boot/dt.img  ${KERNEL_DIR}/Mansi/Output/dt.img
+cp ${OUT_DIR}/arch/arm/boot/zImage  ${KERNEL_DIR}/Mansi/Output/zImage
+cd ${KERNEL_DIR}/Mansi/Output/
 
 echo -e "$cyan Build flash file $nocol"
 zipfile="K30-ALPHA-M1-$(date +"%d-%m-%Y(%I.%M%p)").zip"

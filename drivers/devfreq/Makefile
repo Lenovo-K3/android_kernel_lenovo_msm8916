@@ -9,3 +9,4 @@ obj-$(CONFIG_DEVFREQ_GOV_MSM_CPUBW_HWMON)	+= governor_cpubw_hwmon.o
 
 # DEVFREQ Drivers
 obj-$(CONFIG_ARM_EXYNOS4_BUS_DEVFREQ)	+= exynos4_bus.o
+obj-$(CONFIG_ADRENO_IDLER)		+= adreno_idler.o

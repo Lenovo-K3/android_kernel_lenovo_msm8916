@@ -68,7 +68,7 @@ arch/*/include/generated
 #
 out/
 Mansi/*.zip
-Mansi/Output/dt.img
+Mansi/Output/dtb
 Mansi/Output/zImage
 Mansi/modules
 

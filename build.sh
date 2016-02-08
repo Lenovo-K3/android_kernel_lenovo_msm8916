@@ -15,7 +15,7 @@ nocol='\033[0m'
 
 # Set configs
 mkdir ${OUT_DIR}
-export CROSS_COMPILE=~/toolchains/arm-eabi-4.8/bin/arm-eabi-
+export CROSS_COMPILE=~/toolchains/arm-eabi-4.9/bin/arm-eabi-
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 export USE_CCACHE=1
 export ARCH=arm
@@ -29,7 +29,7 @@ compile_kernel ()
 echo -e "$cyan Clean old files $nocol"
 rm ${OUT_DIR}/arch/arm/boot/Image
 rm ${OUT_DIR}/arch/arm/boot/zImage
-rm ${KERNEL_DIR}/Mansi/Output/dt.img
+rm ${KERNEL_DIR}/Mansi/Output/dtb
 rm ${KERNEL_DIR}/Mansi/Output/zImage
 
 echo -e "$cyan Make DefConfig $nocol"

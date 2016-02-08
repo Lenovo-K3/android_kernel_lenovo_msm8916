@@ -54,16 +54,16 @@ compile_kernel
 esac
 
 echo -e "$cyan Build dtb file $nocol"
-scripts/dtbToolCM -2 -o ${OUT_DIR}/arch/arm/boot/dt.img -s 2048 -p ${OUT_DIR}/scripts/dtc/ ${OUT_DIR}/arch/arm/boot/dts/
+scripts/dtbToolCM -2 -o ${OUT_DIR}/arch/arm/boot/dtb -s 2048 -p ${OUT_DIR}/scripts/dtc/ ${OUT_DIR}/arch/arm/boot/dts/
 
 echo -e "$cyan Copy kernel $nocol"
-cp ${OUT_DIR}/arch/arm/boot/dt.img  ${KERNEL_DIR}/Mansi/Output/dt.img
+cp ${OUT_DIR}/arch/arm/boot/dtb  ${KERNEL_DIR}/Mansi/Output/dtb
 cp ${OUT_DIR}/arch/arm/boot/zImage  ${KERNEL_DIR}/Mansi/Output/zImage
 cd ${KERNEL_DIR}/Mansi/Output/
 
 echo -e "$cyan Build flash file $nocol"
 zipfile="K30-ALPHA-M1-$(date +"%d-%m-%Y(%I.%M%p)").zip"
-zip -r ../${zipfile} ramdisk anykernel.sh dt.img zImage patch tools META-INF -x *kernel/.gitignore*
+zip -r ../${zipfile} ramdisk anykernel.sh dtb zImage patch tools META-INF -x *kernel/.gitignore*
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
 

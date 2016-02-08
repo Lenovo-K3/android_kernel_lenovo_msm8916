@@ -15,7 +15,7 @@ nocol='\033[0m'
 
 # Set configs
 mkdir ${OUT_DIR}
-export CROSS_COMPILE=~/toolchains/arm-eabi-4.9/bin/arm-eabi-
+export CROSS_COMPILE=~/toolchains/arm-eabi-4.8/bin/arm-eabi-
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 export USE_CCACHE=1
 export ARCH=arm
@@ -35,7 +35,7 @@ rm ${KERNEL_DIR}/Mansi/Output/zImage
 echo -e "$cyan Make DefConfig $nocol"
 make O=${OUT_DIR} msm8916-k30_defconfig
 echo -e "$cyan Build kernel $nocol"
-make O=${OUT_DIR} -j$(grep -c ^processor /proc/cpuinfo)
+make O=${OUT_DIR} -j4
 
 if ! [ -a $KERN_IMG ];
 then

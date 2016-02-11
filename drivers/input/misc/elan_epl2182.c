@@ -224,6 +224,7 @@ static struct sensors_classdev sensors_light_cdev = {
 	.min_delay = 1000,	/* in microseconds */
 	.fifo_reserved_event_count = 0,
 	.fifo_max_event_count = 0,
+	.flags = 2,
 	.enabled = 0,
 	.delay_msec = 100,
 	.sensors_enable = NULL,
@@ -242,6 +243,7 @@ static struct sensors_classdev sensors_proximity_cdev = {
 	.min_delay = 1000,	/* in microseconds */
 	.fifo_reserved_event_count = 0,
 	.fifo_max_event_count = 0,
+	.flags = 3,
 	.enabled = 0,
 	.delay_msec = 100,
 	.sensors_enable = NULL,
@@ -962,7 +964,7 @@ static int elan_als_open(struct inode *inode, struct file *file)
 	return 0;
 }
 
-static int elan_als_read(struct file *file, char __user *buffer, size_t count,
+static ssize_t elan_als_read(struct file *file, char __user *buffer, size_t count,
 			 loff_t *ppos)
 {
 	struct elan_epl_data *epld = epl_data;
@@ -1104,6 +1106,7 @@ static long elan_ps_ioctl(struct file *file, unsigned int cmd,
 {
 	int value;
 	int flag;
+	u16 buf[2];
 	struct elan_epl_data *epld = epl_data;
 
 	void __user *argp = (void __user *)arg;
@@ -1160,7 +1163,9 @@ static long elan_ps_ioctl(struct file *file, unsigned int cmd,
 
 		msleep(PS_DELAY);
 		msleep(PS_DELAY);
-		if (copy_to_user(argp, &gRawData.ps_ch1_raw, sizeof(gRawData.ps_ch1_raw)))
+		buf[0] = gRawData.ps_ch1_raw;
+		buf[1] = gRawData.ps_state;
+		if (copy_to_user(argp, buf, sizeof(buf)))
 			return -EFAULT;
 			
 			break;
@@ -1546,7 +1551,7 @@ static int elan_ps_set_enable(struct sensors_classdev *sensors_cdev,
 }
 
 /*at least 500ms, "echo A > poll_delay" means poll A msec! */
-static ssize_t elan_als_poll_delay(struct sensors_classdev *sensors_cdev,
+static int elan_als_poll_delay(struct sensors_classdev *sensors_cdev,
 				   unsigned int delay_msec)
 {
 	struct elan_epl_data *epld =
@@ -1566,7 +1571,7 @@ static ssize_t elan_als_poll_delay(struct sensors_classdev *sensors_cdev,
 }
 
 /*at least 500ms, "echo A > poll_delay" means poll A msec! */
-static ssize_t elan_ps_poll_delay(struct sensors_classdev *sensors_cdev,
+static int elan_ps_poll_delay(struct sensors_classdev *sensors_cdev,
 				  unsigned int delay_msec)
 {
 	struct elan_epl_data *epld =

@@ -30,10 +30,6 @@
 
 #define DT_CMD_HDR 6
 
-#ifndef CONFIG_POWERSUSPEND
-#include <linux/cpufreq_hardlimit.h>
-#endif
-
 DEFINE_LED_TRIGGER(bl_led_trigger);
 
 extern bool is_Lcm_Present;//heming@wingtech.com,20140730, disable lcm backlight when lcm is not connected 

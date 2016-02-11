@@ -213,12 +213,12 @@ static const char ElanALsensorName[] = "light";
 static int psensor_mode_suspend;
 
 static struct sensors_classdev sensors_light_cdev = {
-	.name = "light",
+	.name = "epl2182-light",
 	.vendor = "elan",
 	.version = 1,
 	.handle = SENSORS_LIGHT_HANDLE,
 	.type = SENSOR_TYPE_LIGHT,
-	.max_range = "30000",
+	.max_range = "10240",
 	.resolution = "0.0125",
 	.sensor_power = "0.20",
 	.min_delay = 1000,	/* in microseconds */
@@ -231,7 +231,7 @@ static struct sensors_classdev sensors_light_cdev = {
 };
 
 static struct sensors_classdev sensors_proximity_cdev = {
-	.name = "proximity",
+	.name = "epl2182-proximity",
 	.vendor = "elan",
 	.version = 1,
 	.handle = SENSORS_PROXIMITY_HANDLE,

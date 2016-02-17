@@ -269,7 +269,7 @@
 			qcom,v-cutoff-uv = <3400000>;
 			qcom,max-voltage-uv = <4200000>;
 			qcom,r-conn-mohm = <0>;
-			qcom,shutdown-soc-valid-limit = <30>;
+			qcom,shutdown-soc-valid-limit = <20>; /* Or use default: 30? */
 			qcom,low-soc-calculate-soc-threshold = <15>;
 			qcom,low-voltage-calculate-soc-ms = <1000>;
 			qcom,low-soc-calculate-soc-ms = <5000>;

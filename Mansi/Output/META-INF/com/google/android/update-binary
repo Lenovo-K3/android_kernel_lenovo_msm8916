@@ -56,5 +56,5 @@ fi;
 umount /system;
 ui_print "*********************";
 ui_print "Thanks for flash...";
-ui_print "Mansi for Lenovo K30";
+ui_print "Mansi for Lenovo K30-T";
 ui_print "*********************";

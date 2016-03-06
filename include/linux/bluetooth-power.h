@@ -54,6 +54,8 @@ struct bluetooth_power_platform_data {
 	struct bt_power_vreg_data *bt_vdd_pa;
 	/* VDD_LDOIN voltage regulator */
 	struct bt_power_vreg_data *bt_vdd_ldo;
+	/* VDD_XTAL voltage regulator */
+	struct bt_power_vreg_data *bt_vdd_xtal;
 	/* Optional: chip power down gpio-regulator
 	 * chip power down data is required when bluetooth module
 	 * and other modules like wifi co-exist in a single chip and

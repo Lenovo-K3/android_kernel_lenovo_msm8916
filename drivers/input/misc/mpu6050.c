@@ -131,6 +131,10 @@ struct cali_data{
 		int y ;
 		int z ;
 		int offset;
+		int rx;
+		int ry;
+		int rz;
+		int roffset;
 	};
 struct axis_data {
 	s16 x;
@@ -190,7 +194,7 @@ struct mpu6050_sensor {
 struct mpu6050_sensor *mpu_info;
 /* Accelerometer information read by HAL */
 static struct sensors_classdev mpu6050_acc_cdev = {
-	.name = "accelerometer",
+	.name = "MPU6050-accel",
 	.vendor = "Invensense",
 	.version = 1,
 	.handle = SENSORS_ACCELERATION_HANDLE,
@@ -209,7 +213,7 @@ static struct sensors_classdev mpu6050_acc_cdev = {
 
 /* gyroscope information read by HAL */
 static struct sensors_classdev mpu6050_gyro_cdev = {
-	.name = "gyroscope",
+	.name = "MPU6050-gyro",
 	.vendor = "Invensense",
 	.version = 1,
 	.handle = SENSORS_GYROSCOPE_HANDLE,
@@ -2106,20 +2110,20 @@ static long gyro_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
 		if (copy_from_user(&calidata, argp, sizeof(calidata)))
 			return -EFAULT;
-			sensor->per_cali_gyro.x = calidata.x;
-			sensor->per_cali_gyro.y = calidata.y;
-			sensor->per_cali_gyro.z = calidata.z;
+			sensor->per_cali_gyro.rx = calidata.rx;
+			sensor->per_cali_gyro.ry = calidata.ry;
+			sensor->per_cali_gyro.rz = calidata.rz;
 			wing_info("gyro nv cali x=%d,y=%d,z=%d\n",sensor->per_cali_gyro.x,sensor->per_cali_gyro.y,sensor->per_cali_gyro.z);
 			break;
 	
 	case GYRO_GET_RAW_DATA_FOR_CALI:
 			mpu6050_read_gyro_data(sensor, &sensor->axis);
 			mpu6050_remap_gyro_data(&sensor->axis, sensor->pdata->place);
-			gyrorawdata.x = sensor->axis.rx;
-			gyrorawdata.y = sensor->axis.ry;
-			gyrorawdata.z = sensor->axis.rz;
-			gyrorawdata.offset= 938;
-			wing_info("gyro fastmmi read x=%d,y=%d,z=%d\n",gyrorawdata.x,gyrorawdata.y,gyrorawdata.z);
+			gyrorawdata.rx = sensor->axis.rx;
+			gyrorawdata.ry = sensor->axis.ry;
+			gyrorawdata.rz = sensor->axis.rz;
+			gyrorawdata.roffset= 938;
+			wing_info("gyro fastmmi read x=%d,y=%d,z=%d\n",gyrorawdata.rx,gyrorawdata.ry,gyrorawdata.rz);
 			if (copy_to_user(argp, &gyrorawdata, sizeof(gyrorawdata))) {
 			dev_err(&sensor->client->dev, "copy_to_user failed.");
 			return -EFAULT;

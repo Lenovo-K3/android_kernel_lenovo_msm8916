@@ -42,8 +42,8 @@
 #define REG_DMP_INT_STATUS	0x39
 
 #define REG_INT_STATUS		0x3A
-#define BIT_MOT_INT		0x40
 #define BIT_ZMOT_INT		0x20
+#define BIT_MOT_INT		0x40
 
 #define REG_RAW_ACCEL		0x3B
 #define REG_TEMPERATURE		0x41
@@ -62,7 +62,7 @@
 #define BIT_H_RESET		0x80
 #define BIT_SLEEP		0x40
 #define BIT_CYCLE		0x20
-#define BIT_CLK_MASK		0x7
+#define BIT_CLK_MASK		0x07
 
 #define REG_PWR_MGMT_2		0x6C
 #define BIT_PWR_ACCEL_STBY_MASK	0x38

@@ -40,7 +40,6 @@ export KBUILD_BUILD_HOST="MSI"
 export ARCH=arm
 export SUBARCH=arm
 export TARGET_BUILD_VARIANT=user
-export KERNEL_CONFIG=.config
 
 # gcc 4.8.3 (Linaro 2013.x)
 export CROSS_COMPILE=~/toolchains/arm-eabi-4.8/bin/arm-eabi-

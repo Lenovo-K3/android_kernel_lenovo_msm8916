@@ -44,6 +44,7 @@ export KERNEL_CONFIG=.config
 
 # gcc 4.8.3 (Linaro 2013.x)
 export CROSS_COMPILE=~/toolchains/arm-eabi-4.8/bin/arm-eabi-
+#export CROSS_COMPILE=~/toolchains/arm-cortex_a8-linux-gnueabi-linaro_4.9.4/bin/arm-cortex_a8-linux-gnueabi-
 
 # Other
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle

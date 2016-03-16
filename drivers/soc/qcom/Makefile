@@ -54,3 +54,4 @@ ifdef CONFIG_MSM_SUBSYSTEM_RESTART
        obj-y += ramdump.o
 endif
 obj-$(CONFIG_MSM_SYSMON_COMM) += sysmon.o
+obj-$(CONFIG_ALUCARD_HOTPLUG) += alucard_hotplug.o

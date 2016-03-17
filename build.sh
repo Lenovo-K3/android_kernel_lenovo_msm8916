@@ -97,7 +97,7 @@ echo -e "$cyan Copy kernel $nocol";
 	cd ${KERNEL_DIR}/Mansi/Output/
 
 echo -e "$cyan Build flash file $nocol";
-	zipfile="Mansi_M5_($(date +"%d-%m-%Y(%H.%M%p)")).zip"
+	zipfile="Mansi_M7_($(date +"%d-%m-%Y(%H.%M%p)")).zip"
 	zip -r ../${zipfile} ramdisk anykernel.sh dtb zImage tools META-INF -x *kernel/.gitignore*
 
 	BUILD_END=$(date +"%s")

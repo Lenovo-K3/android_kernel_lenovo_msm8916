@@ -194,7 +194,7 @@ struct mpu6050_sensor {
 struct mpu6050_sensor *mpu_info;
 /* Accelerometer information read by HAL */
 static struct sensors_classdev mpu6050_acc_cdev = {
-	.name = "MPU6050-accel",
+	.name = "mpu6881-accel",
 	.vendor = "Invensense",
 	.version = 1,
 	.handle = SENSORS_ACCELERATION_HANDLE,
@@ -213,7 +213,7 @@ static struct sensors_classdev mpu6050_acc_cdev = {
 
 /* gyroscope information read by HAL */
 static struct sensors_classdev mpu6050_gyro_cdev = {
-	.name = "MPU6050-gyro",
+	.name = "mpu6881-gyro",
 	.vendor = "Invensense",
 	.version = 1,
 	.handle = SENSORS_GYROSCOPE_HANDLE,

@@ -63,6 +63,16 @@ include/config
 include/generated
 arch/*/include/generated
 
+#
+# Generated out files
+#
+out/
+Mansi/*.zip
+Mansi/Output/dtb
+Mansi/Output/zImage
+Mansi/modules
+
+
 # stgit generated dirs
 patches-*
 

@@ -7,7 +7,7 @@ Chipset | Qualcomm Snapdragon 410, msm8916
 GPU     | Adreno 306
 ROM     | 16GB 
 RAM     | 1GB
-Android | 4.4.4
+Android | 5.1.1
 Battery | 2300 mAh
 Display | 720x1280 pixels, 5.0 (~320 ppi pixel density)
 Rear Camera  | 8 mp, 3264x2448 pixels, autofocus, Sony IMX219

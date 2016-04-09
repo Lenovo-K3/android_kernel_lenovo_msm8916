@@ -1,4 +1,4 @@
-Mansi Kernel for Lenovo K30-T
+Mansi Kernel for Lenovo K30-T ![Build Status](https://travis-ci.org/Lenovo-K3/android_kernel_lenovo_msm8916.svg?branch=master)
 ==================================================
 Basic   | Spec Sheet
 -------:|:----------
